@@ -1,0 +1,249 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+
+
+
+.aaa
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+    -fx-background-image: url("../onon.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+#savef
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../face.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+.recog
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../recognition.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+
+
+
+.motion
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../motion.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+.stop2
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../stop.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+.stop1
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../stop.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+.ocr
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../scanner.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+.capture
+{
+
+-fx-min-height: 45px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../camera.png");
+
+    -fx-background-size: 40px 30px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+.gesture
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../gesture.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+.eye
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../eye.png");
+
+    -fx-background-size: 45px 40px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+.sqr
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../square.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+.upperbody
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../aa.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+.fullbody
+{
+
+-fx-min-height: 50px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../fullbody.png");
+	
+
+    -fx-background-size: 50px 40px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+.smiles
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../smile.jpg");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+
+
+
+
+
+
+

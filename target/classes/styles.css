@@ -1,0 +1,17 @@
+
+
+.aaa
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+    -fx-background-image: url("logo/onon.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 8px;
+}
