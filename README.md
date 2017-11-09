@@ -6,7 +6,7 @@
 ExoVisix is a Smart Computer Vision Application with various functionalities. I have tried to put as many Machine Learning tools as possible into one single Application for greater productivity.
 
 ## KEY FEATURES
-* Bio Metric Attendance system Using Face Recognition
+* Auto Attendance system Using Real Time Face Recognition
 * Face Trainer
 * Motion Detection
 * OCR (Optical Character Reader)
