@@ -1,5 +1,9 @@
 # ExoVision
-ExoVision is a Smart Computer Vision Application with various useful features. I have tried to put as many Machine Learning tools as possible into one single Application for greater productivity.
+<p align="center">
+ <img src="./exo.png" alt="Logo" style="width: 220px;"/></div>
+</p>
+
+ExoVision is a Smart Computer Vision Application with various functionalities. I have tried to put as many Machine Learning tools as possible into one single Application for greater productivity.
 
 ## KEY FEATURES
 * Bio Metric Attendance system Using Face Recognition
