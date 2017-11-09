@@ -8,7 +8,7 @@ ExoVision is a Smart Computer Vision Application with various useful features. I
 * OCR (Optical Character Reader)
 * Gesture Control(Controlling Mouse Pointer Using Finger or Red Colored Object)
 * Rectangle Shape Detection
-* Trained Faces Image Gallary View
+* Trained Faces Image Gallery View
 * Eye Detection
 * Persistent Storage for Trained Faces Image Using Database
 
@@ -32,9 +32,9 @@ I have developed this project using Eclipse Neon. So I highly recommend you to u
 ## Maven Dependencies
 ```xml
      <dependency>
-  		    <groupId>org.bytedeco</groupId>
-  		    <artifactId>javacv-platform</artifactId>
-  		    <version>1.3.2</version>
+  	    <groupId>org.bytedeco</groupId>
+  	    <artifactId>javacv-platform</artifactId>
+  	    <version>1.3.2</version>
       </dependency>
   
       <dependency>
@@ -52,7 +52,7 @@ I have developed this project using Eclipse Neon. So I highly recommend you to u
   ```
   
 ### Required Software
-To use **ExoVision**,To properly run this Application on your IDE, you will first need to download and install the following software:
+To properly run this Application on your System, At first you need to download and install the following software:
 
  * An implementation of **Java SE** 7 or newer:
    * **JDK**  http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -76,8 +76,8 @@ To use **ExoVision**,To properly run this Application on your IDE, you will firs
 Finally, please make sure everything has the same bitness: **32-bit and 64-bit modules do not mix under any circumstances**.
 
 # Configuration Settings 
-### ExoVision may not work properly Without these settings
-### Before executing the App, you have to make some change to below mentioned files...
+#### ExoVision may not work properly Without these settings
+#### Before executing the App, you have to make some change to below mentioned files...
 
 ## Database Settings 
 * Open MySQL on XAMPP then Create a New Database & name it **ghostEye** 
@@ -104,7 +104,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 
 ```
 
-* Now Open Database.java and provide your MySQL DB credintials
+* Now Open src/application/Database.java and provide your MySQL DB credintials
 ```java
 package application;
 
@@ -131,6 +131,14 @@ class Database {
 ```
 ## OCR Settings
 * To use tesseract api,at first you have to install tesseract with desired language training data on your system.After That you have to mention the installation folder.
+
+```java
+Now goto src/application/OCR.java ,in line 36 provide your tesseract installation directory name.
+```
+
+# Tips
+* When you going to train a new face try to capture at least 10 pictures of a single person in different angle.keep it in mind that the more number of training image in different angle and posture, the more accurate will be  face recognition.
+
 
 
        
