@@ -31,9 +31,9 @@ public class OCR
    
   
        
-       //to use tesseract api , at first you have to install tesseract api on your system. then you have to mention 
-       //the installation folder . 
-       if(api.Init("C:/Program Files/Java/jre1.8.0_121/bin/tessdata", "eng") != 0)
+        //to use tesseract api,at first you have to install tesseract with desired language training data on your system.After That you have to mention 
+       //the installation folder.
+       if(api.Init("C:/tessdata", "eng") != 0)
        {
     	   System.out.println("could not initialize tesseract");
     	   System.exit(1);
