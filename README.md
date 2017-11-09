@@ -143,6 +143,11 @@ Now goto src/application/OCR.java ,in line 36 provide your tesseract installatio
 # Tips
 * When you going to train a new face try to capture at least 10 pictures of a single person in different angle.keep it in mind that the more number of training image in different angle and posture, the more accurate will be  face recognition.
 
+# Video Tutorial
+* Visit https://www.youtube.com/watch?v=6UnBZFvY8HE&t=3s
+
+
+
 
 
        
