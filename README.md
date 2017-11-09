@@ -52,7 +52,7 @@ I have developed this project using Eclipse Neon. So I highly recommend you to u
   ```
   
 ### Required Software
-To use ####ExoVision,To properly run this Application on your IDE, you will first need to download and install the following software:
+To use **ExoVision**,To properly run this Application on your IDE, you will first need to download and install the following software:
 
  * An implementation of **Java SE** 7 or newer:
    * **JDK**  http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -79,7 +79,7 @@ Finally, please make sure everything has the same bitness: **32-bit and 64-bit m
 ### ExoVision may not work properly Without these settings
 ### Before executing the App, you have to make some change to below mentioned files...
 
-## Database Setting 
+## Database Settings 
 * Open MySQL on XAMPP then Create a New Database & name it **ghostEye** 
 * Now import attached **face_bio.sql** to the  **ghostEye** Database
 * Or Create a New Schema(Table)
@@ -125,9 +125,15 @@ class Database {
 	public final String Database_user = "Your Database user Name";
 	public final String Database_pass = "Your Database Password";
 
-............
+	.
+	.
+	.
 ```
+## OCR Settings
+* To use tesseract api,at first you have to install tesseract with desired language training data on your system.After That you have to mention the installation folder.
 
+
+       
 
  
 
