@@ -38,7 +38,7 @@ public class SampleController {
 	//**********************************************************************************************
 	//Mention The file location path where the face will be saved & retrieved
 	
-	public String filePath="C:/Users/Yashiro/Documents/Codes/Java/GhostEyeFX/faces";
+	public String filePath="./faces";
 	
 	
 	//**********************************************************************************************
