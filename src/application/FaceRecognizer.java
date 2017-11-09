@@ -30,7 +30,7 @@ public class FaceRecognizer {
 
 	public void init() {
 		// mention the directory the faces has been saved
-		String trainingDir = "C:/Users/Yashiro/Documents/Codes/Java/GhostEyeFX/faces";
+		String trainingDir = "./faces";
 
 		root = new File(trainingDir);
 
