@@ -1,8 +1,7 @@
 # ExoVision
 ExoVision is a Smart Computer Vision Application with various useful features. I have tried to put as many Machine Learning tools as possible into one single Application for greater productivity.
 
-KEY FEATURES
------------
+## KEY FEATURES
 * Bio Metric Attendance system Using Face Recognition
 * Face Trainer
 * Motion Detection
@@ -13,15 +12,19 @@ KEY FEATURES
 * Eye Detection
 * Persistent Storage for Trained Faces Image Using Database
 
-TECHNOLOGY USED
----------------
+## TECHNOLOGY USED
 * Core Java
 * JavaCV (wrapper of Opencv )
 * JavaFX
 * MySQL
 * Maven
 * Tesseract OCR Framework
+## USER INTERFACE
+<img src="./src/appLayout.png" alt="ExoVision UI" style="width: 700px;"/>
 
-USER INTERFACE
+# Installation Guide
 
-<img src="./src/appLayout.png" alt="Snesor data plotting" style="width: 700px;"/>
+### IDE
+I have developed this project using Eclipse Neon. So I also recommend you to use this particular IDE.
+
+
