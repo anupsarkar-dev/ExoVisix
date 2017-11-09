@@ -1,9 +1,9 @@
-# ExoVision
+# ExoVisix
 <p align="center">
- <img src="./exo.png" alt="Logo" style="width: 220px;"/></div>
+ <img src="./logo.png" alt="Logo" style="width: 220px;"/></div>
 </p>
 
-ExoVision is a Smart Computer Vision Application with various functionalities. I have tried to put as many Machine Learning tools as possible into one single Application for greater productivity.
+ExoVisix is a Smart Computer Vision Application with various functionalities. I have tried to put as many Machine Learning tools as possible into one single Application for greater productivity.
 
 ## KEY FEATURES
 * Bio Metric Attendance system Using Face Recognition
@@ -24,7 +24,7 @@ ExoVision is a Smart Computer Vision Application with various functionalities. I
 * Maven
 * Tesseract OCR Framework
 ## USER INTERFACE
-<img src="./src/appLayout.png" alt="ExoVision UI" style="width: 700px;"/>
+<img src="./src/appLayout.png" alt="ExoVisix UI" style="width: 700px;"/>
 
 # Installation Guide
 
