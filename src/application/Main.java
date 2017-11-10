@@ -14,7 +14,7 @@ import javafx.fxml.FXMLLoader;
 // Happy Coding  :)
 
 /********************************************************
-*		EXO VISION  | GhostEye			*
+*	    e x o V i s i x | The GhostEye		*
 *		   Anup Kumar Sarkar			*
 *	       me.anup.sarkar@gmail.com			*
 *	        fb.com/i.am.anup.aronno			*
@@ -34,7 +34,7 @@ public class Main extends Application {
 	
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());			
 			primaryStage.getIcons().add(new Image("logo.png"));
-	        primaryStage.setTitle("exoVisix | Smart & Intelligent Computer Vision ");
+	        primaryStage.setTitle("exoVisix | Smart & Intelligent Computer Vision Solution ");
 			
 			primaryStage.setScene(scene);
 			primaryStage.show();
