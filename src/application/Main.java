@@ -13,13 +13,13 @@ import javafx.fxml.FXMLLoader;
 // Think twice but code once.
 // Happy Coding  :)
 
-/****************************************************
-*			EXO VISION  | GhostEye		 			*
-*			  Anup Kumar Sarkar						*
-*		  me.anup.sarkar@gmail.com					*
-*	       fb.com/i.am.anup.aronno					*
-*													*
-*****************************************************/
+/********************************************************
+*		EXO VISION  | GhostEye			*
+*		   Anup Kumar Sarkar			*
+*	       me.anup.sarkar@gmail.com			*
+*	        fb.com/i.am.anup.aronno			*
+*							*
+*********************************************************
 
 //Feel Free to communicate
 
@@ -34,7 +34,7 @@ public class Main extends Application {
 	
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());			
 			primaryStage.getIcons().add(new Image("logo.png"));
-	        primaryStage.setTitle("fusionXvision | Real Time Bio Metric Recognition");
+	        primaryStage.setTitle("exoVisix | Smart & Intelligent Computer Vision ");
 			
 			primaryStage.setScene(scene);
 			primaryStage.show();
