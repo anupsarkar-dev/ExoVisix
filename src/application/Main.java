@@ -34,7 +34,7 @@ public class Main extends Application {
 	
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());			
 			primaryStage.getIcons().add(new Image("logo.png"));
-	        primaryStage.setTitle("exoVisix | Smart & Intelligent Computer Vision Solution ");
+	        primaryStage.setTitle("e x o V i s i x | Smart & Intelligent Computer Vision Solution ");
 			
 			primaryStage.setScene(scene);
 			primaryStage.show();
