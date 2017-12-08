@@ -74,7 +74,7 @@ To properly run this Application on your System, At first you need to download a
    * **MySQL Connector Java**  https://dev.mysql.com/downloads/connector/j/5.1.html
   
  * An implementation of **JavaFX Scene Builder**: (Follow The Installation Instruction)
-   * **JavaCV**  https://docs.oracle.com/javafx/scenebuilder/1/installation_1-0/jsbpub-installation_1-0.htm
+   * **JavaFX Scene Builder**  https://docs.oracle.com/javafx/scenebuilder/1/installation_1-0/jsbpub-installation_1-0.htm
  
 
 Finally, please make sure everything has the same bitness: **32-bit and 64-bit modules do not mix under any circumstances**.
@@ -143,6 +143,9 @@ Now goto src/application/OCR.java ,in line 36 provide your tesseract installatio
 # Tips
 * When you going to train a new face try to capture at least 10 pictures of a single person in different angle.keep it in mind that the more number of training image in different angle and posture, the more accurate will be  face recognition.
 * After everything done ,kindly empty the **faces** folder.There is a test_face image.You have to delete it.
+
+# Please Note:
+Please Keep it in mind ,sometimes the face recognition algorithm provides wrong output if a person is not trained or unknown to the system.The reason behind this is that the face recognition algorithm guess the face with the nearest match.when it does not find any match ,the system pick any face with a nearest match.this is  why it sometimes provides wrong output.
 
 # Video Tutorial
 * Visit https://www.youtube.com/watch?v=6UnBZFvY8HE&t=3s
