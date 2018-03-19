@@ -28,6 +28,10 @@ ExoVisix is a Smart Computer Vision Application with various functionalities. I 
 
 # Installation Guide
 
+
+### Video Guide
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Wzwc4RUJs1Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 ### IDE
 ```bash
 I have developed this project using Eclipse Neon. So I highly recommend you to use this particular IDE.
