@@ -30,7 +30,9 @@ ExoVisix is a Smart Computer Vision Application with various functionalities. I 
 
 
 ### Video Guide
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Wzwc4RUJs1Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/embed/Wzwc4RUJs1Y "Video Title")
 
 ### IDE
 ```bash
