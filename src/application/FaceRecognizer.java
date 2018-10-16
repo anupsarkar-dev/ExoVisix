@@ -55,8 +55,25 @@ public class FaceRecognizer {
 			Mat img = imread(image.getAbsolutePath(), CV_LOAD_IMAGE_GRAYSCALE);
 
 			// extracting unique face code from the face image names
-			// this unique face will be used to fetch all other information from
-			// the database
+			/*
+			this unique face will be used to fetch all other information from
+			I dont put face data on database.
+			I just store face indexes on database.
+
+			For example:
+			When you train a new face to the system suppose person named ABC.
+			Now this person named ABC has 10(can be more or less)  face image which
+			will be saved in the project folder named "/Faces" using a naming convention such as
+			1_ABC1.jpg
+			1_ABC2.jpg
+			1_ABC3.jpg
+			.......
+			1_ABC10.jpg
+		
+			The initial value of the file name is the index key in the database table of that person.
+			the key 1 will be used to fetch data from database.
+ 
+			*/
 			int label = Integer.parseInt(image.getName().split("\\-")[0]);
 
 			images.put(counter, img);
