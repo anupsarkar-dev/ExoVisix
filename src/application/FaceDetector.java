@@ -33,7 +33,6 @@ import static org.bytedeco.javacpp.opencv_imgproc.*;
 import static org.bytedeco.javacpp.opencv_imgcodecs.*;
 import static org.bytedeco.javacpp.opencv_objdetect.*;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -106,8 +105,8 @@ public class FaceDetector implements Runnable {
 
 	int recogniseCode;
 	public int code;
-	public int roll;
-	public String department;
+	public int reg;
+	public int age;
 	
 	public String fname; //first name
 	public String Lname; //last name
@@ -128,10 +127,6 @@ public class FaceDetector implements Runnable {
 	}
 
 	public void start() {
-		
-		
-		
-		
 		try {
 			new Thread(this).start();
 		} catch (Exception e) {
@@ -143,7 +138,7 @@ public class FaceDetector implements Runnable {
 	}
 
 	public void run() {
-		 
+		try {
 			try {
 				grabber = OpenCVFrameGrabber.createDefault(0); //parameter 0 default camera , 1 for secondary
 
@@ -156,18 +151,12 @@ public class FaceDetector implements Runnable {
 				storage = CvMemStorage.create();
 			} catch (Exception e) {
 				if (grabber != null)
-					try {
-						grabber.release();
-						grabber = new OpenCVFrameGrabber(0);
-						grabber.setImageWidth(700);
-						grabber.setImageHeight(700);
-						grabber.start();
-						grabbedImage = grabberConverter.convert(grabber.grab());
-					} catch (org.bytedeco.javacv.FrameGrabber.Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				
+					grabber.release();
+				grabber = new OpenCVFrameGrabber(0);
+				grabber.setImageWidth(700);
+				grabber.setImageHeight(700);
+				grabber.start();
+				grabbedImage = grabberConverter.convert(grabber.grab());
 
 			}
 			int count = 15;
@@ -178,204 +167,200 @@ public class FaceDetector implements Runnable {
 
 			stop = false;
 
-			try {
-				while (!stop && (grabbedImage = grabberConverter.convert(grabber.grab())) != null) {
+			while (!stop && (grabbedImage = grabberConverter.convert(grabber.grab())) != null) {
 
-					Frame frame = grabberConverter.convert(grabbedImage);
-					BufferedImage image = paintConverter.getBufferedImage(frame, 2.2 / grabber.getGamma());
-					Graphics2D g2 = image.createGraphics();
+				Frame frame = grabberConverter.convert(grabbedImage);
+				BufferedImage image = paintConverter.getBufferedImage(frame, 2.2 / grabber.getGamma());
+				Graphics2D g2 = image.createGraphics();
 
-					if (faces == null) {
-						cvClearMemStorage(storage);
-						
-						//creating a temporary image
-						temp = cvCreateImage(cvGetSize(grabbedImage), grabbedImage.depth(), grabbedImage.nChannels());
+				if (faces == null) {
+					cvClearMemStorage(storage);
+					
+					//creating a temporary image
+					temp = cvCreateImage(cvGetSize(grabbedImage), grabbedImage.depth(), grabbedImage.nChannels());
 
-						cvCopy(grabbedImage, temp);
+					cvCopy(grabbedImage, temp);
 
-						cvCvtColor(grabbedImage, grayImage, CV_BGR2GRAY);
-						cvResize(grayImage, smallImage, CV_INTER_AREA);
-						
-						//cvHaarDetectObjects(image, cascade, storage, scale_factor, min_neighbors, flags, min_size, max_size)
-						faces = cvHaarDetectObjects(smallImage, classifier, storage, 1.1, 3, CV_HAAR_DO_CANNY_PRUNING);
-						//face detection
-						
-						CvPoint org = null;
-						if (grabbedImage != null) {
+					cvCvtColor(grabbedImage, grayImage, CV_BGR2GRAY);
+					cvResize(grayImage, smallImage, CV_INTER_AREA);
+					
+					//cvHaarDetectObjects(image, cascade, storage, scale_factor, min_neighbors, flags, min_size, max_size)
+					faces = cvHaarDetectObjects(smallImage, classifier, storage, 1.1, 3, CV_HAAR_DO_CANNY_PRUNING);
+					//face detection
+					
+					CvPoint org = null;
+					if (grabbedImage != null) {
 
-							if (isEyeDetection) { 		//eye detection logic
-								eyes = cvHaarDetectObjects(smallImage, classifierEye, storage, 1.1, 3,
-										CV_HAAR_DO_CANNY_PRUNING);
+						if (isEyeDetection) { 		//eye detection logic
+							eyes = cvHaarDetectObjects(smallImage, classifierEye, storage, 1.1, 3,
+									CV_HAAR_DO_CANNY_PRUNING);
 
-								if (eyes.total() == 0) {
-									eyes = cvHaarDetectObjects(smallImage, classifierEyeglass, storage, 1.1, 3,
-											CV_HAAR_DO_CANNY_PRUNING);
-
-								}
-
-								printResult(eyes, eyes.total(), g2);
-
-							}
-
-							if (isFullBody) { //full body detection logic
-								fullBody = cvHaarDetectObjects(smallImage, classifierFullBody, storage, 1.1, 3,
-										CV_HAAR_DO_CANNY_PRUNING);
-
-								if (fullBody.total() > 0) {
-									printResult(fullBody, fullBody.total(), g2);
-								}
-
-							}
-
-							if (isUpperBody) {
-								try {
-									upperBody = cvHaarDetectObjects(smallImage, classifierUpperBody, storage, 1.1, 3,
-											CV_HAAR_DO_CANNY_PRUNING);
-
-									if (upperBody.total() > 0) {
-										printResult(upperBody, upperBody.total(), g2);
-									}
-
-								} catch (Exception e) {
-									
-									e.printStackTrace();
-								}
-							}
-
-							if (isSmile) {
-								try {
-									smile = cvHaarDetectObjects(smallImage, classifierSmile, storage, 1.1, 3,
-											CV_HAAR_DO_CANNY_PRUNING);
-
-									if (smile != null) {
-										printResult(smile, smile.total(), g2);
-									}
-								} catch (Exception e) {
-									
-									e.printStackTrace();
-								}
-
-							}
-
-							if (isOcrMode) {
-								try {
-
-									OutputStream os = new FileOutputStream("captures.png");
-									ImageIO.write(image, "PNG", os);
-								} catch (IOException e) {
-									
-									e.printStackTrace();
-								}
-							}
-
-							isOcrMode = false;
-
-							if (faces.total() == 0) {
-								faces = cvHaarDetectObjects(smallImage, classifierSideFace, storage, 1.1, 3,
+							if (eyes.total() == 0) {
+								eyes = cvHaarDetectObjects(smallImage, classifierEyeglass, storage, 1.1, 3,
 										CV_HAAR_DO_CANNY_PRUNING);
 
 							}
 
-							if (faces != null) {
-								g2.setColor(Color.green);
-								g2.setStroke(new BasicStroke(2));
-								int total = faces.total();
+							printResult(eyes, eyes.total(), g2);
 
-								for (int i = 0; i < total; i++) {
+						}
+
+						if (isFullBody) { //full body detection logic
+							fullBody = cvHaarDetectObjects(smallImage, classifierFullBody, storage, 1.1, 3,
+									CV_HAAR_DO_CANNY_PRUNING);
+
+							if (fullBody.total() > 0) {
+								printResult(fullBody, fullBody.total(), g2);
+							}
+
+						}
+
+						if (isUpperBody) {
+							try {
+								upperBody = cvHaarDetectObjects(smallImage, classifierUpperBody, storage, 1.1, 3,
+										CV_HAAR_DO_CANNY_PRUNING);
+
+								if (upperBody.total() > 0) {
+									printResult(upperBody, upperBody.total(), g2);
+								}
+
+							} catch (Exception e) {
+								
+								e.printStackTrace();
+							}
+						}
+
+						if (isSmile) {
+							try {
+								smile = cvHaarDetectObjects(smallImage, classifierSmile, storage, 1.1, 3,
+										CV_HAAR_DO_CANNY_PRUNING);
+
+								if (smile != null) {
+									printResult(smile, smile.total(), g2);
+								}
+							} catch (Exception e) {
+								
+								e.printStackTrace();
+							}
+
+						}
+
+						if (isOcrMode) {
+							try {
+
+								OutputStream os = new FileOutputStream("captures.png");
+								ImageIO.write(image, "PNG", os);
+							} catch (IOException e) {
+								
+								e.printStackTrace();
+							}
+						}
+
+						isOcrMode = false;
+
+						if (faces.total() == 0) {
+							faces = cvHaarDetectObjects(smallImage, classifierSideFace, storage, 1.1, 3,
+									CV_HAAR_DO_CANNY_PRUNING);
+
+						}
+
+						if (faces != null) {
+							g2.setColor(Color.green);
+							g2.setStroke(new BasicStroke(2));
+							int total = faces.total();
+
+							for (int i = 0; i < total; i++) {
+								
+								//printing rectange box where face detected frame by frame
+								CvRect r = new CvRect(cvGetSeqElem(faces, i));
+								g2.drawRect((r.x() * 4), (r.y() * 4), (r.width() * 4), (r.height() * 4));
+
+								CvRect re = new CvRect((r.x() * 4), r.y() * 4, (r.width() * 4), r.height() * 4);
+
+								cvSetImageROI(temp, re);
+
+								// File f = new File("captures.png");
+
+								org = new CvPoint(r.x(), r.y());
+
+								if (isRecFace) {
+									String names="Unknown Person!";
+									this.recogniseCode = faceRecognizer.recognize(temp);
+
+									//getting recognised user from the database
 									
-									//printing rectange box where face detected frame by frame
-									CvRect r = new CvRect(cvGetSeqElem(faces, i));
-									g2.drawRect((r.x() * 4), (r.y() * 4), (r.width() * 4), (r.height() * 4));
-
-									CvRect re = new CvRect((r.x() * 4), r.y() * 4, (r.width() * 4), r.height() * 4);
-
-									cvSetImageROI(temp, re);
-
-									// File f = new File("captures.png");
-
-									org = new CvPoint(r.x(), r.y());
-
-									if (isRecFace) {
-										this.recogniseCode = faceRecognizer.recognize(temp);
-
-										//getting recognised user from the database
+									if(recogniseCode != -1)
+									{
 										database.init();
 										user = new ArrayList<String>();
 										user = database.getUser(this.recogniseCode);
 										this.output = user;
 
-										//printing recognised person name into the frame
-										g2.setColor(Color.WHITE);
-										g2.setFont(new Font("Arial Black", Font.BOLD, 20));
-										String names = user.get(1) + " " + user.get(2);
-										g2.drawString(names, (int) (r.x() * 6.5), r.y() * 4);
-
+										names = user.get(1) + " " + user.get(2);
 									}
-
-									if (saveFace) { //saving captured face to the disk
-										//keep it in mind that face code should be unique to each person
-										String fName = "faces/" + code + "-" + fname + "_" + Lname + "_" + count + ".jpg";
-										cvSaveImage(fName, temp);
-										count++;
-
-									}
-
-								}
-								this.saveFace = false;
-								faces = null;
-							}
-
-							WritableImage showFrame = SwingFXUtils.toFXImage(image, null);
-
-							
-							Platform.runLater(new Runnable(){
-
-								@Override
-								public void run() {
-									// TODO Auto-generated method stub
-									frames.setImage(showFrame);
+								
+									//printing recognised person name into the frame
+									g2.setColor(Color.WHITE);
+									g2.setFont(new Font("Arial Black", Font.BOLD, 20));
 									
+									g2.drawString(names, (int) (r.x() * 6.5), r.y() * 4);
+
 								}
-								  
-								});
-							
-							
 
-						
+								if (saveFace) { //saving captured face to the disk
+									//keep it in mind that face code should be unique to each person
+									String fName = "faces/" + code + "-" + fname + "_" + Lname + "_" + count + ".jpg";
+									cvSaveImage(fName, temp);
+									count++;
 
-							if (isMotion) {
-								new Thread(() -> {
-
-									try {
-
-										motionDetector.init(grabbedImage, g2);
-
-									} catch (InterruptedException ex) {
-									} catch (Exception e) {
-										
-										e.printStackTrace();
-									}
-
-								}).start();
+								}
 
 							}
-							isMotion = false;
+							this.saveFace = false;
+							faces = null;
+						}
+
+						WritableImage showFrame = SwingFXUtils.toFXImage(image, null);
+
+						javafx.application.Platform.runLater(new Runnable(){
+							
+							@Override
+							 public void run() {
+							frames.setImage(showFrame);
+							 }
+							 });
+
+						if (isMotion) {
+							new Thread(() -> {
+
+								try {
+
+									motionDetector.init(grabbedImage, g2);
+
+								} catch (InterruptedException ex) {
+								} catch (Exception e) {
+									
+									e.printStackTrace();
+								}
+
+							}).start();
 
 						}
-						cvReleaseImage(temp);
-					}
+						isMotion = false;
 
+					}
+					cvReleaseImage(temp);
 				}
-			} catch (org.bytedeco.javacv.FrameGrabber.Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+
 			}
 
-		}  
-	
+		} catch (Exception e) {
+			if (exception == null) {
+				exception = e;
+
+			}
+		}
+	}
 
 	public void stop() {
 		stop = true;
@@ -697,20 +682,20 @@ public class FaceDetector implements Runnable {
 		Lname = lname;
 	}
 
-	public int getRoll() {
-		return roll;
+	public int getReg() {
+		return reg;
 	}
 
-	public void setRoll(int roll) {
-		this.roll = roll;
+	public void setReg(int reg) {
+		this.reg = reg;
 	}
 
-	public String getDepartment() {
-		return department;
+	public int getAge() {
+		return age;
 	}
 
-	public void setDepartment(String department) {
-		this.department = department;
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	public String getSec() {
@@ -736,8 +721,6 @@ public class FaceDetector implements Runnable {
 	public void setIsRecFace(Boolean isRecFace) {
 		this.isRecFace = isRecFace;
 	}
-
-	
 
 
 }

@@ -342,15 +342,42 @@ public class SampleController {
 					database.setReg(Integer.parseInt(reg.getText()));
 
 					database.insert();
+					
+					javafx.application.Platform.runLater(new Runnable(){
+						
+						@Override
+						 public void run() {
+							pb.setProgress(100);
+						 }
+						 });
 
-					pb.setProgress(100);
+
+					
 
 					savedLabel.setVisible(true);
 					Thread.sleep(2000);
+					
+					javafx.application.Platform.runLater(new Runnable(){
+						
+						@Override
+						 public void run() {
+							pb.setVisible(false);
+						 }
+						 });
 
-					pb.setVisible(false);
+				
+					
+					
 
-					savedLabel.setVisible(false);
+					
+					
+					javafx.application.Platform.runLater(new Runnable(){
+						
+						@Override
+						 public void run() {
+					 savedLabel.setVisible(false);
+						 }
+						 });
 
 				} catch (InterruptedException ex) {
 				}
